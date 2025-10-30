@@ -6,28 +6,35 @@ const canvas = document.getElementById("signaturePad");
 const signaturePad = new SignaturePad(canvas);
 document.getElementById("clearSignature").addEventListener("click", () => signaturePad.clear());
 
-// Dynamische weergave logica
-document.querySelectorAll('.switch input[type="radio"]').forEach(input => {
+window.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll('.switch input[type="radio"]').forEach(input => {
     input.addEventListener('change', (e) => {
-        const targetId = e.target.id;
-        if (targetId === "oppervlakteJa") {
-            document.getElementById("oppervlakteGroot").classList.remove("hidden");
-            document.getElementById("kamers").classList.add("hidden");
-        } else if (targetId === "oppervlakteNee") {
-            document.getElementById("oppervlakteGroot").classList.add("hidden");
-            document.getElementById("kamers").classList.remove("hidden");
-        }
-        if (targetId === "audioJa") document.getElementById("audioBedrag").classList.remove("hidden");
-        if (targetId === "audioNee") document.getElementById("audioBedrag").classList.add("hidden");
-        if (targetId === "sieradenJa") document.getElementById("sieradenBedrag").classList.remove("hidden");
-        if (targetId === "sieradenNee") document.getElementById("sieradenBedrag").classList.add("hidden");
-        if (targetId === "bezittingenJa") document.getElementById("bezittingenBedrag").classList.remove("hidden");
-        if (targetId === "bezittingenNee") document.getElementById("bezittingenBedrag").classList.add("hidden");
-        if (targetId === "huurJa") document.getElementById("huurBedrag").classList.remove("hidden");
-        if (targetId === "huurNee") document.getElementById("huurBedrag").classList.add("hidden");
-        if (targetId === "eigenaarJa") document.getElementById("eigenaarBedrag").classList.remove("hidden");
-        if (targetId === "eigenaarNee") document.getElementById("eigenaarBedrag").classList.add("hidden");
+      const targetId = e.target.id;
+
+      if (targetId === "oppervlakteJa") {
+        document.getElementById("oppervlakteGroot").classList.remove("hidden");
+        document.getElementById("kamers").classList.add("hidden");
+      } else if (targetId === "oppervlakteNee") {
+        document.getElementById("oppervlakteGroot").classList.add("hidden");
+        document.getElementById("kamers").classList.remove("hidden");
+      }
+
+      if (targetId === "audioJa") document.getElementById("audioBedrag").classList.remove("hidden");
+      if (targetId === "audioNee") document.getElementById("audioBedrag").classList.add("hidden");
+
+      if (targetId === "sieradenJa") document.getElementById("sieradenBedrag").classList.remove("hidden");
+      if (targetId === "sieradenNee") document.getElementById("sieradenBedrag").classList.add("hidden");
+
+      if (targetId === "bezittingenJa") document.getElementById("bezittingenBedrag").classList.remove("hidden");
+      if (targetId === "bezittingenNee") document.getElementById("bezittingenBedrag").classList.add("hidden");
+
+      if (targetId === "huurJa") document.getElementById("huurBedrag").classList.remove("hidden");
+      if (targetId === "huurNee") document.getElementById("huurBedrag").classList.add("hidden");
+
+      if (targetId === "eigenaarJa") document.getElementById("eigenaarBedrag").classList.remove("hidden");
+      if (targetId === "eigenaarNee") document.getElementById("eigenaarBedrag").classList.add("hidden");
     });
+  });
 });
 
 document.getElementById("woningType").addEventListener("change", (e) => {
@@ -114,4 +121,5 @@ document.getElementById("inventoryForm").addEventListener("submit", (e) => {
             document.getElementById("loadingScreen").style.display = "none";
             alert("Er is een fout opgetreden bij het verzenden.");
         });
+
 });
